@@ -9,7 +9,7 @@ import streamlit as st
 import altair as alt
 
 
-cluster = MongoClient("mongodb+srv://xkapotis:xkapotis222222@cluster0-hpms9.mongodb.net/Comparison_Results?retryWrites=true&w=majority")
+cluster = MongoClient("mongodb+srv://<....>:<....>@cluster0-hpms9.mongodb.net/Comparison_Results?retryWrites=true&w=majority")
 db = cluster["Comparison_Results"]
 collection = db["Data"]
 
