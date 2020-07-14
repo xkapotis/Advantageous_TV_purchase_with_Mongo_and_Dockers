@@ -4,9 +4,9 @@ import dns
 import pandas as pd
 from datetime import date
 
-def toMongo():
+def toMongo(username,password):
 
-    cluster = MongoClient("mongodb+srv://<.....>:<.....>@cluster0-hpms9.mongodb.net/Comparison_Results?retryWrites=true&w=majority")
+    cluster = MongoClient(f"mongodb+srv://{username}:{password}@cluster0-hpms9.mongodb.net/Comparison_Results?retryWrites=true&w=majority")
     db = cluster["Comparison_Results"]
     collection = db["Data"]
 

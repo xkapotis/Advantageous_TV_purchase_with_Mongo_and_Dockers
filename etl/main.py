@@ -1,4 +1,5 @@
 import pandas as pd
+import sys
 from scraper_kotsovolos import scraper_kotsovolos
 from scraper_plaisio import scraper_plaisio
 from comparison import comparison
@@ -14,8 +15,9 @@ plaisio_links = [
     "https://www.plaisio.gr/tileoraseis/tvs/page-4/view-48"
 ]
 
-scraper_kotsovolos(kotsovolos_link)
-scraper_plaisio(plaisio_links)
+if __name__ == "__main__":    
+    scraper_kotsovolos(kotsovolos_link)
+    scraper_plaisio(plaisio_links)
 
-comparison()
-toMongo()
+    comparison()
+    toMongo(sys.argv[1],sys.argv[2])
