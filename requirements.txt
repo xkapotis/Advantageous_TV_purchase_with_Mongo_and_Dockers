@@ -1,0 +1,7 @@
+pandas
+streamlit
+pymongo
+dnspython
+altair
+beautifulsoup4
+numpy

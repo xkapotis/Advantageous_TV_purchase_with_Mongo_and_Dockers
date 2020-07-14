@@ -1,0 +1,18 @@
+version: "3.5"
+services:
+  etl:
+    build: .    # common Dockerfile
+    image: adv:latest
+    working_dir: /Advantageous_TV_purchase_with_Mongo_and_Dockers/etl
+    command: python main.py ${USR} ${PSWD}
+
+  ui:
+    build: .    # common Dockerfile
+    image: adv:latest   # reuse image from etl service, it wont be rebuild
+    ports:
+        - "8551:8501"
+    depends_on:
+        - "etl"
+    links:
+        - "etl:etl"
+    command: /bin/bash -c "while ping -c1 etl &>/dev/null; do sleep 1; done; echo 'ETL finished!' && streamlit run app.py ${USR} ${PSWD}" #poll etl container until it finishes. Then start the ui
